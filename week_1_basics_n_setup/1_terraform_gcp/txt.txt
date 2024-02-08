@@ -1,0 +1,16 @@
+ set up gcp acct
+ cr8 projrt 'dtc-de'
+ edit project id--gen nu one 
+ service accounut is an account for a particular service 
+ cr8nservice acct 
+ and cr8 api key under the service acct
+ install gcloud cli sdk 
+ and export crederntial
+ big query : structured data
+ edit permissions : grant our service permission tpo create a bucket 
+ 3role:viewer-storage-admin,storage-object-admin, big-query-admin
+
+ **in production we create specific roles and associate to specific resources
+
+ enable api access via IAM
+ select the service account for the api to have access to

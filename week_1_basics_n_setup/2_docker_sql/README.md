@@ -256,4 +256,21 @@ services:
 
 ### SQL 
 
+```sql
+tpep_pickup_datetime,
+tpep_dropoff_datetime,
+total_amount,
+CONCAT(zpu."Borough", ' / ' , zpu."Zone") AS "pickup_loc",
+CONCAT(zdo."Borough", ' / ' , zdo."Zone") AS "dropoff_loc"
+
+ FROM yellow_taxi_data t,
+ zones zpu,
+ zones zdo
+ 
+ WHERE
+ 	t."PULocationID"=zpu."LocationID" AND
+ 	t."DOLocationID"=zdo."LocationID"
+ LIMIT 100
+
+ joins where theres alway a match for pickup and drop ids
 Coming soon!
