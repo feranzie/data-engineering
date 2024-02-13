@@ -34,16 +34,16 @@ def transform_data(df):
     print(f"post :missing  passenger count:{df['passenger_count'].isin([0]).sum()}")
     return df
 @task(log_prints=True, retries=3)
-def ingest_data(user, password, host, port, db, table_name, df):
+def ingest_data(user, password, host, port, db, table_name, csv_url):
     # the backup files are gzipped, and it's important to keep the correct extension
     # for pandas to be able to open the file
-    # if url.endswith('.csv'):
-    #     csv_name = 'yellow_tripdata_2021-01.csv'
-    # else:
-    #     csv_name = 'output.csv'
-    #os.system(f"wget {url} -O {csv_name}")
-    # print("here 1")
-    # csv_name = 'yellow_tripdata_2021-01.csv'
+    if url.endswith('.csv'):
+         csv_name = 'yellow_tripdata_2021-01.csv'
+    else:
+        csv_name = 'output.csv'
+    os.system(f"wget {url} -O {csv_name}")
+    print("here 1")
+    #csv_name = 'yellow_tripdata_2021-01.csv'
     connection_block=SqlAlchemyConnector.load("postgres-connector")
     with connection_block.get_connection(begin=False)as engine:
 
@@ -56,7 +56,7 @@ def log_subflow(table_name:str):
 
 @flow(name="Ingest Flow")
 def main_flow(table_name:str):
-    dirc="yellow_tripdata_2019-01.csv"
+    dirc="yellow_tripdata_2021-01.csv"
     csv_url="https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2021-01.csv"
     log_subflow(table_name)
     raw_data=extract_data(dirc)

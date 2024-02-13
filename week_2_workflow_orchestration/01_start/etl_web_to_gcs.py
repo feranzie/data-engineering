@@ -45,10 +45,10 @@ def write_gcs(path:Path)-> None:
 def etl_web_gcs() -> None:
     """tHE MAIN etll function"""
     color="yellow"
-    year=2019
+    year=2021
     month=1
     dataset_file=f"{color}_tripsdata_{year}-{month:02}"
-    dataset_url="yellow_tripdata_2019-01.csv"
+    dataset_url=""
     print(dataset_file)
     df=fetch(dataset_url)
     df_clean=clean(df)
