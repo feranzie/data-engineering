@@ -1,0 +1,10 @@
+cd week_2_workflow_orchestration/03_deployments
+
+python etl_web_gcs.py
+python etl_gcs_to_bq.py
+python parameterized_flow.py
+
+
+yellow_tripsdata_2021-01.csv
+
+yellow_tripsdata_2021-01.csv

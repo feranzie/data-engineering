@@ -97,3 +97,12 @@ echo $
 
 -python -m HTtp server--creata a server to access files in current directory
 --ipconfig-- get your ip adress
+
+
+
+docker run -it \
+  -e PGADMIN_DEFAULT_EMAIL="admin@admin.com" \
+  -e PGADMIN_DEFAULT_PASSWORD="root" \
+  -p 8080:80 \
+  dpage/pgadmin4
+
